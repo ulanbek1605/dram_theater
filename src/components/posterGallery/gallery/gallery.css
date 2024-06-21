@@ -1,0 +1,293 @@
+.gallery {
+    background: url("../../../../public/img/gallery.png") no-repeat;
+    background-position: top center bottom;
+    background-size: center;
+    max-width: 1970px;
+    width: 100%;
+    height: 1000px;
+    position: relative;
+    margin: 155px auto 0;
+    /* padding-bottom:250px; */
+  }
+  .gallery_title h1 {
+    padding: 80px 70px 0 0;
+    font-weight: 400;
+    font-size: 44px;
+    color: rgb(81, 81, 81);
+  }
+  .gallery_image_block {
+    display: flex;
+    position: relative;
+    margin-top: 106px;
+  }
+  .img1 {
+    position: absolute;
+    left: -2.25%;
+    transition: transform 0.5s ease;
+  }
+  .img1:hover {
+    transform: rotate(21deg);
+    z-index: 1;
+    transition: transform 0.5s ease;
+
+  }
+  .img2 {
+    position: absolute;
+    left: 13.5%;
+    top: 20px;
+  }
+  .img2:hover {
+    transform: rotate(-22deg);
+    z-index: 1;
+    transition: transform 0.5s ease;
+
+  }
+  .img3 {
+    position: absolute;
+    left: 31.5%;
+    top: 120px;
+  }
+  .img3:hover {
+    transform: rotate(34deg);
+    z-index: 1;
+    transition: transform 0.5s ease;
+
+  }
+  .img4 {
+    position: absolute;
+    left: 65.75%;
+    top: 60px;
+  }
+  .img4:hover {
+    transform: rotate(-23.5deg);
+    z-index: 1;
+    transition: transform 0.5s ease;
+  }
+  .img5 {
+    position: absolute;
+    left: 49.875%;
+    top: 200px;
+  }
+  .img5:hover {
+    transform: rotate(-14.5deg);
+    z-index: 1;
+    transition: transform 0.5s ease;
+
+  }
+  .img6 {
+    position: absolute;
+    left: 80.625%;
+  }
+  .img6:hover {
+    transform: rotate(-15.5deg);
+    z-index: 1;
+    transition: transform 0.5s ease;
+
+  }
+  .tunduk {
+    position: absolute;
+    right: 100px;
+    bottom: 0;
+  }
+  .tunduk svg {
+    transform-origin: center;
+    transition: transform 0.3s linear;
+  }
+  .tunduk:hover svg path {
+    fill: #CE7D7D;
+    cursor: pointer;
+  }
+  
+  .tunduk:hover svg {
+    transform: rotate(30deg) scale(1.1) translateX(10px);
+    transition: all 0.3s linear;
+  }
+  
+  .tunduk p {
+    transform-origin: center;
+    transition: transform 0.3s linear;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 105px;
+    right: 50px;
+    font-weight: 600;
+    z-index: 2;
+  }
+  
+  .tunduk .circle {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    z-index: -2;
+    bottom: 54px;
+    right: 50px;
+  }
+  
+  .tunduk:hover .circle {
+    background: #FFC179;
+    transition: background 0.3s linear;
+  }
+  
+  .tunduk:hover p {
+    transform: translateX(-15px);
+    font-weight: 700;
+    font-size: 20px;
+  }
+  
+
+@media (max-width:1250px){
+  .tunduk {
+    bottom: -110px;
+}
+}
+
+@media (max-width:1000px){
+  .img1{
+    left: 3.75%;
+  }
+  .img2{
+    left: 34.5%;
+  }
+  .img3{
+    left: 4.5%;
+    top: 310px;
+  }
+  .img4{
+    left: 38.75%;
+    top: 273px;
+  }
+  .img5{
+    left: 4.875%;
+    top: 508px;
+  }
+  .img6{
+    left: 26.625%;
+    top: 495px;
+  }
+  .tunduk {
+    bottom: -410px;
+}
+}
+
+@media (max-width:850px){
+  .tunduk {
+    bottom: -500px;
+}
+}
+
+@media (max-width:700px){
+  .gallery_title{
+    margin-left:  -25px;
+  }
+  .gallery_title h1{
+    padding: 0 ;
+    font-size: 30px;
+  }
+
+  .img1 {
+    left: 11.75%;
+}
+.img2 {
+  left: 7.5%;
+  top: 300px;
+}
+.img3 {
+  left: 15.5%;
+  top: 476px;
+}
+.img4 {
+  left: 11.75%;
+  top: 700px;
+}
+.img5{
+  left: 8.875%;
+top: 900px;
+}
+.img6 {
+  left: 9.625%;
+  top: 1100px;
+}
+
+.tunduk {
+  bottom: -1100px;
+}
+}
+
+@media (max-width:500px){
+  .gallery_title{
+    margin-left:  -30px;
+  }
+  .gallery_title h1{
+    padding: 0 ;
+    font-size: 28px;
+  }
+
+
+  .tunduk {
+    bottom: -1000px;
+  }
+}
+
+@media (max-width:450px){
+  .gallery_image_block {
+    margin-top: 50px;
+}
+.img1 {
+  left: 0;
+}
+.img2 {
+  left: 0;
+  top: 245px;
+}
+.img3 {
+  left: 0;
+  top: 388px;
+}
+.img4 {
+  left: 0;
+  top: 600px;
+}
+.img5 {
+  left: 0;
+  top: 800px;
+}
+.img6 {
+  left: 0px;
+  top: 930px;
+}
+.tunduk {
+  bottom: -755px;
+  right: 50px;
+}
+}
+
+@media (max-width:375px){
+  .img2 {
+    left: 0;
+    top: 176px;
+}
+.img3 {
+  left: 0;
+  top: 280px;
+}
+.img4 {
+  left: 0;
+  top: 410px;
+}
+.img5 {
+  left: 0;
+  top: 580px;
+}
+.img6 {
+  left: 0px;
+  top: 700px;
+}
+.tunduk {
+  bottom: -418px;
+  right: 28px;
+}
+}
+

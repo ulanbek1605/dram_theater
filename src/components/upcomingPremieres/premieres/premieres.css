@@ -1,0 +1,65 @@
+.premires {
+  overflow: hidden;
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  background: url("../../../../public/img/premeries.png") no-repeat;
+  background-position: center center;
+}
+
+.premires_container {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.premires_title h1 {
+  font-weight: 400;
+  font-size: 44px;
+  padding: 80px 0 0px 70px;
+  color: rgb(81, 81, 81);
+}
+
+.premires_block {
+  display: flex;
+  gap: 22px;
+  overflow-x: scroll;
+  padding: 80px 0 214px 70px;
+
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width:1000px) {
+  .premires_title h1 {
+    font-size: 38px;
+    padding: 80px 0 0px 47px;
+  }
+  .premires_block {
+    padding: 80px 0 214px 47px;
+  
+  }
+
+}
+
+@media (max-width:700px) {
+  .premires_title h1 {
+    font-size: 26px;
+    padding: 60px 0 0px 20px;
+  }
+  .premires_block {
+    padding: 60px 0 120px 20px;
+  
+  }
+}
+
+@media (max-width:450px) {
+  .premires_title h1 {
+    font-size: 26px;
+    padding: 30px 0 0px 12px;
+  }
+  .premires_block {
+    padding: 30px 0 36px 12px;
+  }}

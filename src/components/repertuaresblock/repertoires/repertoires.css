@@ -1,0 +1,100 @@
+.repertoires {
+    overflow: hidden;
+}
+
+.repertoires_container {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.repertoires_title h1 {
+    font-weight: 400;
+    font-size: 44px;
+    padding: 140px 0 80px 70px;
+    color: rgb(81, 81, 81);
+}
+
+.repertoires_block {
+    display: flex;
+    gap: 22px;
+    overflow-x: scroll;
+    scrollbar-width: 0;
+
+    padding-left: 70px;
+}
+
+.repertoires_block::-webkit-scrollbar {
+    width: 0;
+}
+
+.repertoires_position_btn {
+    display: flex;
+    justify-content: end;
+    padding: 60px 70px 125px 0;
+}
+
+
+@media (max-width:1000px) {
+    .repertoires_title h1 {
+        padding: 80px 0 70px 47px;
+        font-size: 40px;
+    }
+    .card_component {
+        max-width: 380px;
+        width: 100%;
+        height: 520px;
+        object-fit: cover;
+    }  
+    .repertoires_block{
+        padding-left: 47px;
+    }
+    .repertoires_position_btn{
+        padding: 30px 40px 70px 0;
+    }
+}
+
+@media (max-width:700px) {
+    .repertoires_title h1 {
+        padding: 60px 0 40px 20px;
+        font-size: 30px;
+    }
+    .card_component {
+        max-width: 380px;
+        width: 100%;
+        height: 520px;
+        object-fit: cover;
+    }  
+    .repertoires_block{
+        padding-left: 20px;
+    }
+    .repertoires_position_btn{
+        padding: 20px 45px 50px 0;
+    }
+}
+
+@media (max-width:450px){
+    .repertoires_title h1 {
+        padding: 60px 0 30px 12px;
+        font-size: 28px;
+    }
+    .card_component {
+        max-width: 324px;
+        width: 100%;
+        height: 452px;
+        object-fit: cover;
+    } 
+    .repertoires_block{
+        padding-left: 12px;
+    }
+    .repertoires_position_btn{
+        display: flex;
+        justify-content: center;
+        padding: 20px 12px 60px 12px;
+        margin: 0;
+    }
+    .repertoires_btn{
+        max-width: 352px;
+        width: 100%;
+    }
+}

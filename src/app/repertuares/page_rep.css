@@ -1,0 +1,22 @@
+.container_rep{
+	max-width: 1920px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 80px;
+
+
+}
+.repertoires_page_title h1{
+	font-weight: 400px;
+	font-size: 28px;
+}
+.repertoires_page_config button img{
+	max-width: 36px;
+	width: 100%;
+}
+
+@media (max-width:1100px){
+	.container_rep{
+		padding: 0	12px;
+	}
+}

@@ -1,0 +1,39 @@
+.container_repertoires_comp{
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 80px;
+}
+
+.repertoires_page{
+    margin: 0 auto;
+    padding-bottom: 140px;
+}
+.repertoires_page_title{
+    display: flex;
+    justify-content: space-between;
+    padding: 140px 0 80px;
+}
+.repertoires_page_title h1{
+ font-weight: 400;
+ font-size:44px;
+ color:rgb(81, 81, 81);
+}
+
+.repertoires_page_config{
+    display:flex;
+    gap:20px;
+}
+.line{
+    border:1px solid rgb(81 , 81, 81);
+    max-width: 1430px;
+    width:100%;
+    margin: 0 auto;
+}
+
+
+@media (max-width:1100px){
+    .container_repertoires_comp{
+        padding: 0;
+    }
+}

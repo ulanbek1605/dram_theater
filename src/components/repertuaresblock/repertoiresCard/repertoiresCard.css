@@ -1,0 +1,285 @@
+.repertoirescard {
+    max-width: 1430px;
+    width: 100%;
+    margin: 0 auto;
+    border-bottom: 1px solid rgb(81, 81, 81);
+    display: flex;
+    padding: 60px 0;
+}
+
+.repertoirescard:first-child {
+    border-top: 1px solid rgb(81, 81, 81);
+}
+
+.repertoirescard_container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    gap: 36px;
+    margin-left: -50px;
+}
+
+.repertuar_card_left {
+    text-align: end;
+}
+
+.repertuar_card_left .repertuar_card_left_title {
+    font-weight: 400;
+    font-size: 42px;
+    color: rgb(81, 81, 81);
+}
+
+.description {
+    font-size: 18px;
+    padding: 20px 0 35px 0;
+
+}
+
+.repertuar_card_left p {
+    font-size: 18px;
+    color: rgb(81, 81, 81);
+    padding-bottom: 47px;
+}
+
+.description-content {
+    width: 400px;
+
+    height: 100px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin-bottom: 30px;
+}
+
+.btn_container {
+    display: flex;
+    justify-content: end;
+
+}
+
+.btn_card_repert {
+    max-width: 130px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgb(81, 81, 81);
+    display: flex;
+    height: 36px;
+}
+
+.card_center {
+    max-width: 330px;
+    height: 400px;
+}
+
+.card_center img {
+max-width: 330px !important;
+height: 100%;
+}
+.repert_date {
+    font-weight: 400;
+    font-size: 34px;
+    color: rgb(81, 81, 81);
+}
+
+.repert_time {
+    padding: 13px 0 30px;
+
+}
+
+.repert_time p {
+    font-size: 20px;
+    color: rgb(81, 81, 81);
+}
+
+.repert_card_price {
+    padding-bottom: 25px;
+}
+
+.price_title {
+    font-weight: 400;
+    font-size: 34px;
+    color: rgb(81, 81, 81);
+}
+
+.repert_price {
+    width: 57px;
+    font-weight: 400;
+    font-size: 22px;
+    color: rgb(81, 81, 81);
+    border-bottom: 1px solid rgb(81, 81, 81);
+    padding-top: 4px;
+}
+
+.btn_right_card {
+    width: 206px;
+    height: 50px;
+    border: 1px solid rgb(81, 81, 81);
+    border-radius: 5px;
+}
+
+.btn_right_gray {
+    display: none;
+    max-width: 352px;
+    width: 100%;
+    border-radius: 5px;
+    border: 0.5px;
+    height: 60px;
+}
+
+.btn_right_card_yellow {
+    max-width: 352px;
+    width: 100%;
+    height: 60px;
+    display: none;
+}
+
+@media (max-width:1250px) {
+    .repertoirescard {
+        padding: 40px 0;
+    }
+
+    .repertoirescard_container {
+        gap: 22px;
+        margin-left: 0px;
+    }
+
+    .repertuar_card_left {
+        width: 100%;
+    }
+
+    .repertuar_card_left .repertuar_card_left_title {
+        font-size: 36px;
+        color: rgb(81, 81, 81);
+    }
+
+    .repertuar_card_left p {
+        font-size: 16px;
+        padding-bottom: 40px;
+    }
+
+    .description-content {
+        width: 400px;
+        height: 100px;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin-bottom: 20px;
+    }
+
+    .repert_date {
+        font-size: 28px;
+    }
+
+    .repert_time {
+        padding: 13px 0 20px;
+    }
+
+    .repert_time p {
+        font-size: 18px;
+    }
+
+    .card_center {
+        width: 330px;
+    }
+
+    .card_center img {
+        width: 330px;
+        height: 380px;
+    }
+
+    .card_right {
+        width: 100%;
+
+    }
+}
+
+
+
+
+@media (max-width:1100px) {
+    .repertoirescard_container {
+        max-width: 352px;
+        width: 100%;
+        flex-direction: column;
+        margin: 0 auto;
+        gap: 12px;
+    }
+
+    .repertuar_card_left {
+        text-align: start;
+
+    }
+
+    .repertuar_card_left_title {
+        font-size: 32px;
+        font-weight: 400;
+
+    }
+
+    .repertuar_card_left p {
+        display: none;
+    }
+
+    .btn_card_repert {
+        display: none;
+    }
+
+    .card_center {
+        max-width: 352px;
+        width: 100%;
+        max-height: 539px;
+        height: 100%;
+
+    }
+
+    .card_center img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .card_right_info {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 104px 24px 0;
+    }
+
+    .repert_date {
+        font-size: 20px;
+    }
+
+    .repert_time p {
+        font-size: 20px;
+
+    }
+
+    .repert_time {
+        padding: 10px 0;
+    }
+
+    .repert_card_price p {
+        font-size: 20px;
+    }
+
+    .card_right {
+        width: 100%;
+    }
+
+    .btn_right_card {
+        /* max-width: 352px;
+        width: 100%;
+        height: 60px; */
+        display: none;
+    }
+
+    .btn_right_card_yellow {
+        display: block;
+    }
+
+    .btn_right_gray {
+        margin-top: 12px;
+        display: block;
+        width: 100%;
+    }
+}

@@ -1,0 +1,148 @@
+.newspage {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.newspage_cards_page {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+
+
+
+}
+
+.newspage_cards_block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: end;
+    margin-bottom: 200px;
+}
+
+.container_newspage {
+    padding: 0 80px;
+}
+
+.newspage_title {
+    font-size: 44px;
+    font-weight: 400;
+    color: rgb(81, 81, 81);
+    padding-top: 140px;
+}
+
+.newspage_cards_parrent {
+    position: relative;
+}
+
+.news_absolute {
+    position: sticky;
+    top: 120px;
+    left: 0;
+    margin-left: 120px;
+
+}
+
+.blog {
+    line-height: normal;
+
+}
+
+.line_blog {
+    border-bottom: 2px solid rgb(81, 81, 81);
+    width: 250px;
+}
+
+.text1 {
+    margin-left: 150px;
+    color: rgb(81, 81, 81);
+    font-size: 34px;
+    font-weight: 400;
+}
+
+.text2 {
+    margin-left: 180px;
+    color: rgb(81, 81, 81);
+    font-size: 34px;
+    font-weight: 400;
+}
+
+.text3 {
+    margin-left: 240px;
+    color: rgb(81, 81, 81);
+    font-size: 34px;
+    font-weight: 400;
+}
+
+.news_absolute h1 {
+    width: 518px;
+    padding: 0;
+    margin: 0;
+    font-size: 96px;
+    color: rgb(81, 81, 81);
+
+}
+
+.newspage_cards_block-mobile {
+    display: none;
+    margin-bottom: 200px;
+}
+
+@media (max-width: 1700px) {
+    .news_absolute {
+        margin-left: 80px;
+    }
+
+    .news_absolute h1 {
+        font-size: 80px;
+    }
+
+    .line_blog {
+        width: 210px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .container_newspage {
+        padding: 0 40px;
+    }
+
+    .news_absolute {
+        margin-left: 20px;
+    }
+
+    .news_absolute h1 {
+        width: 0;
+    }
+}
+
+
+@media (max-width:1350px) {
+    .newspage_cards_block {
+        display: none;
+    }
+
+    .newspage_cards_block-mobile {
+        display: block;
+    }
+}
+
+@media (max-width:1000px) {
+    .newspage_title{
+        font-size: 28px;
+        font-weight: 400;
+    }
+    .newspage_cards_parrent {
+        display: none;
+    }
+
+    .newspage_cards_page{
+        justify-content: center;
+    }
+    .newspage_cards_block-mobile {
+        justify-content: center;
+    }
+
+
+}
