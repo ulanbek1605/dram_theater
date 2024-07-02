@@ -1,0 +1,32 @@
+.aboutAnimations {
+    overflow-x: hidden;
+
+    >div {
+        overflow-x: scroll;
+        position: relative;
+
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #ff0000;
+            /* Цвет полосы прокрутки */
+            border-radius: 4px;
+            /* Радиус закругления полосы прокрутки */
+            transform: translateY(-100px);
+        }
+
+        >div {
+            flex-direction: column;
+
+            &:nth-child(even) {
+                flex-direction: column-reverse;
+            }
+
+
+        }
+    }
+
+
+}
