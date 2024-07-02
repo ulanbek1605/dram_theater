@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import './profilePages.css'
 const history = [
@@ -103,7 +104,13 @@ const history = [
 	},
 ]
 function ProfilePages() {
-	
+		// Функция для того что бы выйти из аккаунта ///
+		function logout(e: React.MouseEvent<HTMLButtonElement>) {
+			e.preventDefault();
+			localStorage.removeItem('TokenDram');
+			window.location.reload();
+			window.location.replace('/')
+		}
 	return (
 		<div className='container-profile'>
 			<h2 className="profile_title">Профиль</h2>
@@ -142,7 +149,7 @@ function ProfilePages() {
 					<div className='profile_btn-block'>
 						<div className='profile_btn-block-update'>
 							<button>Изменить данные</button>
-							<button>Выйти из аккаунта</button>
+							<button onClick={logout}>Выйти из аккаунта</button>
 						</div>
 						<div>
 							<button>Сохранить</button>

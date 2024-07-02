@@ -20,6 +20,8 @@ function Login() {
 		instance.post("/auth/login/", loginData)
 			.then(response => {
 				console.log(response);
+				localStorage.setItem('TokenDram', response.data.token_key)
+				window.location.replace('/profile')
 			}).catch(e => {
 				console.log('loginError', e);
 				setErrors(e.response.data)
@@ -45,6 +47,8 @@ function Login() {
 	function addNavigate(){
 		window.location.replace('/register')
 	}
+
+
 	return (
 		<div className='login.container'>
 			<div className="login_inner">

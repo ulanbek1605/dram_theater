@@ -15,6 +15,15 @@ function Header() {
         setMenu(!menu)
     }
 
+    useEffect(() => {
+        if (typeof window == 'undefined') return
+        let token = localStorage.getItem('TokenDram')
+        if (token) {
+            let chekToken = instance.get('')
+        }
+        setToken(!!token)
+    }, [])
+
     return (
         <div className={pathname === '/login' || pathname === '/register' || pathname === '/reset-password' ? 'hidden' : "headers"}>
             <div className="header">
@@ -73,7 +82,7 @@ function Header() {
                                     </svg>
                                 </div>
                                 <Link href={token === false ? '/login' : '/profile'}>
-                                    <svg
+                                    {token === true ? <svg
                                         width="30.000000"
                                         height="30.000000"
                                         viewBox="0 0 30 30"
@@ -120,7 +129,8 @@ function Header() {
                                                 stroke-linecap="round"
                                             />
                                         </g>
-                                    </svg>
+                                    </svg> : <div>ВОЙТИ</div>}
+
                                 </Link>
                                 <div className="w-[201px] h-[43px] ml-1 rounded-md">
                                     <ButtonYellow className='rounded-md text-gray-600 hover:bg-yellow-400'>Купить билеты</ButtonYellow>
@@ -134,7 +144,7 @@ function Header() {
                                         <div className="window_logo">Logo</div>
                                         <div className="close_menu"><img onClick={showBurgerMenu} src={"/svg/close.svg"} alt="" /></div></div>
                                     <div className="window_burger-menu-btns">
-                                        <div className="w-[291px] h-[48px] rounded-6 mx-auto" onClick={()=>{window.location.replace('/login')}}>
+                                        <div className="w-[291px] h-[48px] rounded-6 mx-auto" onClick={() => { window.location.replace('/login') }}>
                                             <ButtonGray >Войти</ButtonGray>
                                         </div>
                                         <div className="w-[291px] h-[48px] rounded-6 mx-auto" >
