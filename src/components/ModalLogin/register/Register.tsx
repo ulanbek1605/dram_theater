@@ -12,9 +12,11 @@ function Register() {
     password: null,
     confirmPassword: null
   })
+
   const passwordTypeOne = () => {
     setPasswordShowOne((prev) => !prev);
   };
+
   const passwordTypeTwo = () => {
     setPasswordShowTwo((prev) => !prev);
   };
@@ -27,10 +29,10 @@ function Register() {
 
   const handleSubmitCreate = (e: any) => {
     e.preventDefault()
-    if(create.confirmPassword != create.password){
-      return setCreationErrors({password:'Пароли не совподают!'})
+    if (create.confirmPassword != create.password) {
+      return setCreationErrors({ password: 'Пароли не совподают!' })
     }
-    let {confirmPassword, ...createData} = create
+    let { confirmPassword, ...createData } = create
     instance
       .post("/auth/register/", createData)
       .then((response) => {
@@ -42,10 +44,7 @@ function Register() {
       .catch((error) => {
         setCreationErrors(error.response.data);
       });
-
   }
-
-
 
   const handleChangeCreate = (e: any) => {
     if (getCreateError(e.target.name))
@@ -53,10 +52,10 @@ function Register() {
     setCreate({ ...create, [e.target.name]: e.target.value || null });
   }
 
-/// Функция который направляет на другие страницы ///
-function addNavigate(){
-  window.location.replace('/login')
-}
+  /// Функция который направляет на другие страницы ///
+  function addNavigate() {
+    window.location.replace('/login')
+  }
   return (
     <div className='login.container'>
       <div className="login_inner">
@@ -73,7 +72,6 @@ function addNavigate(){
               <input className="outline-none" type="text" placeholder="Имя" name="first_name" onChange={handleChangeCreate} />
             </div>
             {getCreateError("first_name") ? <p className="error">{getCreateError("first_name")}</p> : null}
-
             <div className="login_input">
               <input
                 className="outline-none"
@@ -100,9 +98,8 @@ function addNavigate(){
                 className="outline-none"
                 name="confirmPassword"
                 type={passwordShowTwo ? "text" : "password"}
-                placeholder="Пароль"
+                placeholder="Повторите пароль"
                 onChange={handleChangeCreate}
-
               />
               <img src="/svg/eye.svg" alt="" onClick={passwordTypeTwo} />
             </div>
@@ -113,7 +110,6 @@ function addNavigate(){
               </span>
             </div>
             <button className="entrance registerBtnStyle" type="submit">Зарегистрироваться</button>
-
             <div className="line_flex">
               <div className="line_or"></div>
               <p>или</p>
@@ -137,7 +133,6 @@ function addNavigate(){
             </div>
           </form>
         </div>
-
       </div>
       <div className="curtain">
         <div className="curtain_left"></div>

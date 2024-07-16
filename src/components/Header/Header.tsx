@@ -22,6 +22,7 @@ function Header() {
             let chekToken = instance.get('')
         }
         setToken(!!token)
+
     }, [])
 
     return (
@@ -143,14 +144,17 @@ function Header() {
                                     <div className="window_burger-menu-head">
                                         <div className="window_logo">Logo</div>
                                         <div className="close_menu"><img onClick={showBurgerMenu} src={"/svg/close.svg"} alt="" /></div></div>
-                                    <div className="window_burger-menu-btns">
+                                    {token === false ? <div className="window_burger-menu-btns">
                                         <div className="w-[291px] h-[48px] rounded-6 mx-auto" onClick={() => { window.location.replace('/login') }}>
                                             <ButtonGray >Войти</ButtonGray>
                                         </div>
-                                        <div className="w-[291px] h-[48px] rounded-6 mx-auto" >
+                                        <div className="w-[291px] h-[48px] rounded-6 mx-auto" onClick={() => { window.location.replace('/register') }} >
                                             <ButtonGray>Зарегистрироваться</ButtonGray>
                                         </div>
                                     </div>
+                                        : <div className="w-[270px] h-[48px] rounded-6 mx-auto mb-10" onClick={() => { window.location.replace('/profile') }} >
+                                            <ButtonGray>Профиль</ButtonGray>
+                                        </div>}
                                     <nav className="modal_burger-menu-nav">
                                         <Link className={pathname === '/' ? 'active' : ''} href="/" >Афиша</Link>
                                         <Link className={pathname === '/repertuares' ? 'active' : ''} href="/repertuares">Репертуары</Link>
@@ -167,7 +171,6 @@ function Header() {
                                 </div>}
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
