@@ -13,7 +13,7 @@ function MainScreen() {
 
     if( pathname == "/detailed" ) return ""
     return (
-        <div className={pathname === '/login'|| pathname === '/register' || pathname === '/reset-password' ? 'hidden' : 'main'}>
+        <div className={pathname === '/login'|| pathname === '/register' || pathname === '/reset-password' || pathname === '/hall' ? 'hidden' : 'main'}>
             <div className="main__container relative">
                 <Swiper
                     spaceBetween={0}

@@ -1,7 +1,12 @@
 .aboutAnimations {
     overflow-x: hidden;
 
-    >div {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    .div {
         overflow-x: scroll;
         position: relative;
 
@@ -11,9 +16,7 @@
 
         ::-webkit-scrollbar-thumb {
             background-color: #ff0000;
-            /* Цвет полосы прокрутки */
             border-radius: 4px;
-            /* Радиус закругления полосы прокрутки */
             transform: translateY(-100px);
         }
 
@@ -29,4 +32,19 @@
     }
 
 
+}
+
+.duotes {
+    overflow-x: hidden;
+}
+
+.paralax-box div {
+    &:nth-child(even) {
+        transform: translateY(0px);
+    }
+
+    &:nth-child(odd) {
+        transform: translateY(117px);
+
+    }
 }
