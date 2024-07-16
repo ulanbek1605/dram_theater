@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 function Footer() {
   const pathname = usePathname();
   return (
-    <div className={pathname === '/login'|| pathname === '/register' || pathname === '/reset-password' ? 'hidden' : 'footer'}>
+    <div className={pathname === '/login'|| pathname === '/register' || pathname === '/reset-password' || pathname === '/hall' ? 'hidden' : 'footer'}>
       <div className="footer_info">
         <div className={pathname === '/contacts' ? 'footer-container' : 'footer_container'}>
           <div className="footer_info_logo">LOGO</div>

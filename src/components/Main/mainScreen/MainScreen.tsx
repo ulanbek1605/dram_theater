@@ -10,8 +10,10 @@ import { ButtonYellow } from "@/components/UI/Button";
 import { usePathname } from "next/navigation";
 function MainScreen() {
     const pathname = usePathname();
+
+    if( pathname == "/detailed" ) return ""
     return (
-        <div className={pathname === '/login'|| pathname === '/register' || pathname === '/reset-password' ? 'hidden' : 'main'}>
+        <div className={pathname === '/login'|| pathname === '/register' || pathname === '/reset-password' || pathname === '/hall' ? 'hidden' : 'main'}>
             <div className="main__container relative">
                 <Swiper
                     spaceBetween={0}

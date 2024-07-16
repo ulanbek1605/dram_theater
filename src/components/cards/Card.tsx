@@ -47,7 +47,7 @@ function Card({ name, description, image, data, time, price }: CardProps) {
     const formattedTime = `${weekDays[weekIndex]}, ${time}`
     return (
         <div className="card_component">
-            <img className="card_img" src={image} alt="" />
+            <img className="card_img object-cover" src={image} alt="" />
             <div className="card_info">
                 <div className="card_info_title">
                     <h3>{name}</h3>
