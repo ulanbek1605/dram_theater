@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./repertoiresCard.css";
 import { ButtonBrown, ButtonGray, ButtonOutline, ButtonYellow } from "@/components/UI/Button";
 function Repertoirescard(props: any) {
-  const { name, description, image, data, time, price } = props;
+  const { name, description, image, data, time, price ,id} = props;
   console.log(props);
 
   return (
@@ -13,7 +13,7 @@ function Repertoirescard(props: any) {
           <p className="description">описание:</p>
           <p className="description-content">{description}</p>
           <div className="btn_container">
-            <div className="btn_card_repert">
+            <div className="btn_card_repert" onClick={() => window.location.replace(`/detailed/${id}`)}>
               <ButtonOutline>Далее</ButtonOutline>
             </div>
           </div>

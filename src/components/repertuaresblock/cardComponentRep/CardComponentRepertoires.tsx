@@ -10,6 +10,7 @@ interface CardProps {
     image: string
     data: string
     time: string
+    id: number
     price: string | undefined
 }
 
@@ -37,7 +38,7 @@ const weekDays = [
     "пятница",
     "суббота"
 ]
-function CardComponentRepertoires({ name, description, image, data, time, price }: CardProps) {
+function CardComponentRepertoires({ name, description, image, data, time, price ,id}: CardProps) {
 
     const date = new Date(data);
     const day = date.getDate();
@@ -93,7 +94,7 @@ function CardComponentRepertoires({ name, description, image, data, time, price 
                             </ButtonYellow>
                         </div>
                         <div className="cardrep_details">
-                            <Link href="">Подробнее</Link>
+                            <Link href={`/detailed/${id}`}>Подробнее</Link>
                         </div>
                     </div>
                 </div>

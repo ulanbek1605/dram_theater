@@ -1,10 +1,13 @@
 "use client";
-import "../detailed/index.css";
+import "./index.css";
 import { instance } from "@/components/axios";
 import Card from "@/components/cards/Card";
 import Calendar from "@/components/deteils/Calendar";
+import { useParams } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 const page = () => {
+  const params = useParams()
+  
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [data, setData] = useState<{ [key: string]: any }>({});
@@ -23,10 +26,11 @@ const page = () => {
   };
 
   useEffect(() => {
+    if (!params.id) return
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await instance.get("/repertoires/1/");
+        const res = await instance.get(`/repertoires/${params.id}/`);
         setData(res.data);
         setLoading(false);
       } catch (error) {
@@ -37,12 +41,12 @@ const page = () => {
     fetchData();
   }, []);
 
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<any[]>([]);
   async function showData() {
     try {
-      const response = await instance.get("/repertoires/");
+      const response = await instance.get(`/repertoires/${params.id}/`);
 
-      setResults(response.data.results);
+      setResults([response.data]);
     } catch (error) {
       console.log("error", error);
     }
@@ -110,7 +114,7 @@ const page = () => {
           <div className="w-[30%] max-1000:w-full">
             <div>
               <p className="text-[22px] text-[#515151] max-1000:text-[18px] font-normal">
-                Жанр: {data?.genres?.map((item) => formatDuration(item.name))}
+                Жанр: {data?.genres?.map((item:any) => formatDuration(item.name))}
               </p>
               <p className="text-[22px] text-[#515151] max-1000:text-[18px] font-normal flex gap-8">
                 <span>13+</span>
@@ -126,7 +130,7 @@ const page = () => {
                 В ролях
               </span>
               <p className="flex gap-1 flex-wrap max-1000:text-[18px]">
-                {data.actors?.map((item) => (
+                {data.actors?.map((item:any) => (
                   <span>{item.full_name},</span>
                 ))}
               </p>
@@ -138,7 +142,7 @@ const page = () => {
             Ближайшие премьеры
           </h3>
           <div className="premires_block ">
-            {results.map((item: any, index: number) => {
+            {results?.map((item: any, index: number) => {
               let price: any = "";
               let data = "";
               let time = "";
@@ -157,6 +161,7 @@ const page = () => {
                     image={item.image}
                     data={data}
                     time={time}
+                    id={item.id}
                     price={`${price[0].price} - ${price[1].price}`}
                   />
                 </div>

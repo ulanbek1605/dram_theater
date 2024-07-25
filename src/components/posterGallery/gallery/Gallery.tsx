@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import "./gallery.css";
 import Image from "next/image";
@@ -58,7 +59,7 @@ function Gallery() {
             />
           </div>
         </div>
-        <div className="tunduk">
+        <div onClick={() => window.location.replace('/gallery')} className="tunduk">
           <div className="circle"></div>
           <p>Подробнее</p>
           <svg

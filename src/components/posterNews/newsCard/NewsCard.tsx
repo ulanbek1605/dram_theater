@@ -18,7 +18,7 @@ function Newscard(props:{title:string, data:string, description:string, image:an
                 </div>
                 
                 <div>
-                    <Link href=''>Подробнее <img src="/svg/arrow.svg" alt="" /></Link>
+                    <Link href='/news'>Подробнее <img src="/svg/arrow.svg" alt="" /></Link>
                 </div>
             </div>
         </div>

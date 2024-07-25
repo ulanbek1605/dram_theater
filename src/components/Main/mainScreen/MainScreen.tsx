@@ -10,10 +10,8 @@ import { ButtonYellow } from "@/components/UI/Button";
 import { usePathname } from "next/navigation";
 function MainScreen() {
     const pathname = usePathname();
-
-    if( pathname == "/detailed" ) return ""
     return (
-        <div className={pathname === '/login'|| pathname === '/register' || pathname === '/reset-password' || pathname === '/hall' ? 'hidden' : 'main'}>
+        <div className={pathname === '/login'|| pathname === '/register' || pathname === '/reset-password' || pathname === '/hall' || pathname.includes('detailed') ? 'hidden' : 'main'}>
             <div className="main__container relative">
                 <Swiper
                     spaceBetween={0}
@@ -132,7 +130,7 @@ function MainScreen() {
                                 От 300сом Купить билеты
                             </ButtonYellow>
                         </div>
-                        <div className="details-mobile">
+                        <div className="details-mobile"> 
                             <Link href="">Подробнее</Link>
                         </div>
                     </div>

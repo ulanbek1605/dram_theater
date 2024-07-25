@@ -8,7 +8,8 @@ function Repertoirespage() {
   async function showRepertoiresCard() {
     try {
       const response = await instance.get('/repertoires/');
-      console.log(response.data.results);
+      console.clear()
+      console.log('ex',response.data.results);
       setRepState(response.data.results)
     } catch (error) {
       console.error('Error repertoires:', error);
@@ -40,6 +41,7 @@ function Repertoirespage() {
                 image={item.image}
                 data={data}
                 time={time}
+                id={item.id}
                 price={price?.price}
               />
             );

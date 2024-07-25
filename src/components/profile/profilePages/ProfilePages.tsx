@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import './profilePages.css'
 const history = [
 	{
@@ -104,13 +104,29 @@ const history = [
 	},
 ]
 function ProfilePages() {
-		// Функция для того что бы выйти из аккаунта ///
-		function logout(e: React.MouseEvent<HTMLButtonElement>) {
-			e.preventDefault();
-			localStorage.removeItem('TokenDram');
-			window.location.reload();
-			window.location.replace('/')
-		}
+	const [passwordShowOne, setPasswordShowOne] = useState(false)
+	const [passwordShowTwo, setPasswordShowTwo] = useState(false)
+	const [changePin, setChangePin] = useState<any>(false)
+	function handleOpen(e: any) {
+		e.preventDefault()
+		setChangePin(true)
+	}
+
+
+	const passwordTypeOne = () => {
+		setPasswordShowOne((prev) => !prev);
+	  };
+	
+	  const passwordTypeTwo = () => {
+		setPasswordShowTwo((prev) => !prev);
+	  };
+	// Функция для того что бы выйти из аккаунта ///
+	function logout(e: React.MouseEvent<HTMLButtonElement>) {
+		e.preventDefault();
+		localStorage.removeItem('TokenDram');
+		window.location.reload();
+		window.location.replace('/')
+	}
 	return (
 		<div className='container-profile'>
 			<h2 className="profile_title">Профиль</h2>
@@ -126,33 +142,64 @@ function ProfilePages() {
 								<p className='profileTitle'>E-mail:</p>
 								<p className='profileInfo'>prolabacademy.com</p>
 							</div>
-							<div className='profile_name'>
+							{/* <div className='profile_name'>
 								<p className='profileTitle'>Номер телефона:</p>
 								<p className='profileInfo'>+996550112233</p>
-							</div>
+							</div> */}
 						</div>
-						<div className='profile-pin'>
+						{changePin && <div className='profile-pin'>
 							<div className='profile_name'>
 								<p className='profileTitle'>Старый пароль:</p>
-								<p className='profileInfo'>+996550112233</p>
+								<div className="password_input_change">
+									<input
+										className="outline-none"
+										type={passwordShowOne ? "text" : "password"}
+										placeholder="Старый пароль"
+										name="password"
+										// onChange={handleChangeCreate}
+									/>
+									<img src="/svg/eye.svg" alt="" onClick={passwordTypeOne} />
+								</div>
 							</div>
 							<div className='profile_name'>
 								<p className='profileTitle'>Новый пароль:</p>
-								<p className='profileInfo'>+996550112233</p>
+								<div className="password_input_change">
+									<input
+										className="outline-none"
+										type={passwordShowOne ? "text" : "password"}
+										placeholder="Новый пароль"
+										name="password"
+										// onChange={handleChangeCreate}
+									/>
+									<img src="/svg/eye.svg" alt="" onClick={passwordTypeOne} />
+								</div>
 							</div>
 							<div className='profile_name'>
 								<p className='profileTitle'>Подтвердите пароль:</p>
-								<p className='profileInfo'>+996550112233</p>
+								<div className="password_input_change">
+									<input
+										className="outline-none"
+										type={passwordShowOne ? "text" : "password"}
+										placeholder="Подтвердите пароль"
+										name="password"
+										// onChange={handleChangeCreate}
+									/>
+									<img src="/svg/eye.svg" alt="" onClick={passwordTypeOne} />
+								</div>
 							</div>
 						</div>
+						}
 					</div>
 					<div className='profile_btn-block'>
 						<div className='profile_btn-block-update'>
-							<button>Изменить данные</button>
+							{changePin === false ?
+								<button onClick={handleOpen}>Изменить данные</button>
+								: ""
+							}
 							<button onClick={logout}>Выйти из аккаунта</button>
 						</div>
 						<div>
-							<button>Сохранить</button>
+							<button onClick={() => setChangePin(false)}>Сохранить</button>
 						</div>
 					</div>
 				</div>

@@ -50,6 +50,7 @@ function Repertoires() {
                     image={item.image}
                     data={data}
                     time={time}
+                    id={item.id}
                     price={`${price[0].price} - ${price[1].price}`} />
                 </div>
               )
@@ -60,7 +61,7 @@ function Repertoires() {
 
         </div>
         <div className="repertoires_position_btn">
-          <div className="repertoires_btn w-[255px] h-[52px] rounded-lg border border-black">
+          <div className="repertoires_btn w-[255px] h-[52px] rounded-lg border border-black" onClick={()=> window.location.replace('/repertuares')}>
             <ButtonOutline className="text-black )] ">
               Репертуары
             </ButtonOutline>

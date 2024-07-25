@@ -11,6 +11,7 @@ interface CardProps {
     image: string
     data: string
     time: string
+    id: number
     price: string | undefined
 }
 
@@ -38,7 +39,7 @@ const weekDays = [
     "пятница",
     "суббота"
 ]
-function Card({ name, description, image, data, time, price }: CardProps) {
+function Card({ name, description, image, data, time, price, id }: CardProps) {
     const date = new Date(data);
     const day = date.getDate();
     const monthIndex = date.getMonth();
@@ -97,7 +98,7 @@ function Card({ name, description, image, data, time, price }: CardProps) {
                             </ButtonYellow>
                         </div>
                         <div className="card_details">
-                            <Link href="">Подробнее</Link>
+                            <Link href={`/detailed/${id}`}>Подробнее</Link>
                         </div>
                     </div>
                 </div>

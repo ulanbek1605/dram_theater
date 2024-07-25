@@ -47,6 +47,7 @@ function Repertoiresgallery() {
               return (
                 <div key={index}>
                   <CardComponentRepertoires
+                    id = {item.id}
                     name={item.name}
                     description={item.description}
                     image={item.image}

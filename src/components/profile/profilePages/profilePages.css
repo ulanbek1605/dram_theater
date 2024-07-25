@@ -178,6 +178,25 @@
 	gap: 8px;
 }
 
+
+.password_input_change {
+    width: 100%;
+    border-bottom: 1px solid #B4B4B4;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 12px 5px;
+}
+
+.password_input_change input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0 0;
+    font-size: 20px;
+    background-color: transparent;
+}
+
+
 @media (max-width:1665px) {
 	.container-profile {
 		padding: 80px 40px 60px 80px;
