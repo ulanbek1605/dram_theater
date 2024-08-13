@@ -12,7 +12,7 @@ interface CardProps {
     data: string
     time: string
     id: number
-    price: string | undefined
+    price: string | null
 }
 
 

@@ -26,7 +26,7 @@ function Header() {
     }, [])
 
     return (
-        <div className={`${pathname === '/login' || pathname === '/register' || pathname === '/reset-password' || pathname === '/hall' ? 'hidden' : "headers"} z-[51] relative`}>
+        <div className={`${pathname === '/login' || pathname === '/register' || pathname === '/reset-password' || pathname === '/hall' ||pathname === '/forgot' ? 'hidden' : "headers"} z-[51] relative`}>
             <div className="header">
                 <div className="container">
                     <div className="header__inner">
