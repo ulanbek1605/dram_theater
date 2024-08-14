@@ -7,11 +7,9 @@ export const instance = axios.create({
 
 
 instance.interceptors.request.use((respon) => {
-	let token = localStorage.getItem('tokenDram')
+	let token = localStorage.getItem('TokenDram')
 	if (token) {
-		
-		respon.headers.Authorization = token
-		
+		respon.headers.Authorization = 'Token ' + token
 	}
 	return respon
 })

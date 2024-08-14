@@ -14,6 +14,7 @@ interface CardProps {
     id: number
     price: string | undefined,
     item: any,
+    price: string | null
 }
 
 
@@ -107,5 +108,4 @@ function Card({ name, description, image, data, time, price, id }: CardProps) {
         </div>
     )
 }
-
 export default Card

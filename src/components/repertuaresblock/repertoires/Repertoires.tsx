@@ -41,7 +41,10 @@ function Repertoires() {
                 data = element.date
                 time = element.time.split(':', 2).join(':')
                 price = element.ticket_types.filter((elem: any) => elem.seance === element.id);
+                
               })
+              console.log('PRICE',price);
+
               return (
                 <div key={index}>
                   <Card
@@ -51,7 +54,7 @@ function Repertoires() {
                     data={data}
                     time={time}
                     id={item.id}
-                    price={`${price[0].price} - ${price[1]?.price}`} />
+                    price={`${price[0]?.price} - ${price[1] ? price[1].price : null}`} />
                 </div>
               )
           })

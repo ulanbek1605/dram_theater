@@ -19,8 +19,9 @@ function Login() {
 		e.preventDefault()
 		instance.post("/auth/login/", loginData)
 			.then(response => {
-				console.log(response);
+				console.log('qwerty123',response);
 				localStorage.setItem('TokenDram', response.data.token_key)
+				localStorage.setItem('userId', response.data.id)
 				window.location.replace('/profile')
 			}).catch(e => {
 				console.log('loginError', e);

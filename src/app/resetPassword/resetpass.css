@@ -1,0 +1,90 @@
+.reset_password-container {
+	max-width: 1920px;
+	width: 100%;
+	height: 100vh;
+	position: relative;
+  }
+  .reset_password_inner {
+	width: 100%;
+	height: 100%;
+	display: flex;
+  }
+  .reset_password_img {
+	width: 100%;
+	height: 100vh;
+	/* transform: translateX(-100%); */
+	/* animation: slideInFromLeft 2s ease-out 2s forwards; */
+  }
+  .reset_password_img img {
+	width: 100%;
+	height: 100%;
+  }
+  
+  .reset_password_form {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	/* transform: translateX(-50%); */
+	/* animation: slideToRight 2s ease-out 2s forwards; */
+  }
+  
+  .form {
+	width: 552px;
+	text-align: center;
+	margin: 0 auto;
+  }
+  .form_greetings {
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 44px;
+	color: #818181;
+	padding-bottom: 24px;
+  }
+  .form_text {
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 22px;
+	color: #818181;
+	padding-bottom: 18px;
+  }
+  
+  .password_input {
+	width: 100%;
+	border-bottom: 1px solid #b4b4b4;
+	display: flex;
+	justify-content: space-between;
+	padding: 38px 12px 5px;
+  }
+  .password_input input {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 0 0;
+  }
+  
+  .entrance_forgot {
+	display: flex;
+	margin: 0 auto;
+	gap: 12px;
+	align-items: center;
+	color: #5b5b5b;
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: 500px;
+	border: 1px solid #5b5b5b;
+	border-radius: 6px;
+	padding: 24px 146px;
+	margin-top: 20px;
+  }
+  
+  .error_text_block {
+	margin-bottom: 32px;
+	height: 30px;
+  }
+  .error_text {
+	display: none;
+	color: #ff3636;
+	font-size: 16px;
+  }
+  

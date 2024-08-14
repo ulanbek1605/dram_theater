@@ -1,15 +1,12 @@
 'use client'
 import { instance } from '@/components/axios'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-
-const testGit = 'Assalomu aleykum Ulan'
+import '../modalLogin.css'
 
 function Forgot() {
   const pathname = usePathname()
   const [email, setEmail] = useState('')
-  // const router = useRouter()
   const search = useSearchParams()
   const [errors, setErrors] = useState<any>({});
 
@@ -22,29 +19,29 @@ function Forgot() {
       window.location.replace('/resetPassword')
     }
   }, [search])
-  // const handleResetPassword = (event: FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault()
-  //   let formData = new FormData(event.target as HTMLFormElement)
-  //   let data = Object.fromEntries(formData.entries())
-  //   if (data.new_password != data.new_password_confirm) return setErrors({ resetPasswordConfirm: 'Пароли должны совпадать!' })
-  //   const check = instance.post('/auth/reset-password/', { key: search.get('key'), new_password: data.new_password })
-  //   check
-  //     .then(res => window.location.replace('login'))
-  //     .catch(err => {
-  //       for (let [key, item] of Object.entries(err.response.data)) {
-  //         if (key == 'key') {
-  //           setErrors({ [key]: item })
-  //           setTimeout(() => {
-  //             window.location.replace('login')
-  //             search.delete()
-  //           }, 1500)
-  //           return
-  //         }
-  //         setErrors({ [key]: item })
-  //       }
-  //     })
+  const handleResetPassword = (event: any) => {
+    event.preventDefault()
+    let formData = new FormData(event.target as HTMLFormElement)
+    let data = Object.fromEntries(formData.entries())
+    if (data.new_password != data.new_password_confirm) return setErrors({ resetPasswordConfirm: 'Пароли должны совпадать!' })
+    const check = instance.post('/auth/reset-password/', { key: search.get('key'), new_password: data.new_password })
+    check
+      .then(res => window.location.replace('login'))
+      .catch(err => {
+        for (let [key, item] of Object.entries(err.response.data)) {
+          if (key == 'key') {
+            setErrors({ [key]: item })
+            setTimeout(() => {
+              window.location.replace('login')
+              search.delete()
+            }, 1500)
+            return
+          }
+          setErrors({ [key]: item })
+        }
+      })
 
-  // }
+  }
   const passwordReset = (e: any) => {
     e.preventDefault()
     instance.post('/auth/send-reset-password-key/', {
@@ -66,7 +63,7 @@ function Forgot() {
           <img src="/img/loginimg.png" alt="" />
         </div>
         <div className="login_form">
-          <form className="form" onSubmit={passwordReset}>
+          <form className="form" onSubmit={handleResetPassword}>
             <h3 className="form_greetings">Забыли пароль?</h3>
             <p className="form_text">Войдите с помощью кода подтверждения</p>
             <div className="login_input">
