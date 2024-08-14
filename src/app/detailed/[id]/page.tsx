@@ -165,7 +165,6 @@ const page = () => {
                     data={data}
                     time={time}
                     id={item.id}
-                    item={item}
                     price={`${price[0]?.price} - ${price[1]?.price}`}
                   />
                 </div>
