@@ -1,18 +1,18 @@
-'use client'
-import React, { useState } from 'react'
-import Login from './login/Login'
+// 'use client'
+// import React, { useState } from 'react'
+// import Login from './login/Login'
 
-function Modal() {
-    const [modal, setModal] = useState(true)
-  return (
-    <div className='modal_window'>
+// function Modal() {
+//     const [modal, setModal] = useState(true)
+//   return (
+//     <div className='modal_window'>
 
-        {
-            modal === true ? <Login /> : null
-        }
+//         {
+//             modal === true ? <Login /> : null
+//         }
      
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
-export default Modal
+// export default Modal
