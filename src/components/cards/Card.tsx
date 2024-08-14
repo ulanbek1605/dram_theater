@@ -106,5 +106,4 @@ function Card({ name, description, image, data, time, price, id }: CardProps) {
         </div>
     )
 }
-
 export default Card

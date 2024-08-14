@@ -1,6 +1,7 @@
 'use client'
-import React, { useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import './profilePages.css'
+import { instance } from '@/components/axios'
 const history = [
 	{
 		id: 1,
@@ -111,21 +112,67 @@ function ProfilePages() {
 		e.preventDefault()
 		setChangePin(true)
 	}
+	const [historyData, setHistoryData] = useState<any[]>([]);
+	const [profileData, setProfileData] = useState<{ [key: string]: any }>({})
 
+	async function getHistoryData() {
+		try {
+			const userId = localStorage.getItem('userId');
+			if (userId) {
+				const response = await instance.get(`auth/profile/${userId}`);
+				console.log("history", response);
+				setHistoryData(response.data.carts);
+			}
+		} catch (e: any) {
+			console.log('historyError', e);
+		}
+	}
 
+	useEffect(() => {
+		getHistoryData();
+	}, []);
+
+	console.log("profile/history", historyData);
 	const passwordTypeOne = () => {
 		setPasswordShowOne((prev) => !prev);
-	  };
-	
-	  const passwordTypeTwo = () => {
+	};
+
+	const passwordTypeTwo = () => {
 		setPasswordShowTwo((prev) => !prev);
-	  };
+	};
 	// Функция для того что бы выйти из аккаунта ///
-	function logout(e: React.MouseEvent<HTMLButtonElement>) {
+	const logout = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		localStorage.removeItem('TokenDram');
+		localStorage.removeItem('userId')
 		window.location.reload();
 		window.location.replace('/')
+	}
+	const handldeChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = e.target
+		setProfileData(prev => ({ ...prev, [name]: value }))
+	}
+
+
+
+	const changePasswordSubmit = async () => {
+		if (profileData.conf_password != profileData.new_password) return alert('Hello');
+		try {
+			const { new_password, old_password } = profileData
+			await instance.put('/auth/change-password/', {
+				new_password,
+				old_password
+			},
+				{
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+
+			setChangePin(false)
+		} catch (e: any) {
+			console.log('error', e);
+		}
 	}
 	return (
 		<div className='container-profile'>
@@ -153,10 +200,12 @@ function ProfilePages() {
 								<div className="password_input_change">
 									<input
 										className="outline-none"
+										value={profileData.old_password}
 										type={passwordShowOne ? "text" : "password"}
 										placeholder="Старый пароль"
-										name="password"
-										// onChange={handleChangeCreate}
+										name="old_password"
+										onChange={handldeChange}
+									// onChange={handleChangeCreate}
 									/>
 									<img src="/svg/eye.svg" alt="" onClick={passwordTypeOne} />
 								</div>
@@ -168,8 +217,11 @@ function ProfilePages() {
 										className="outline-none"
 										type={passwordShowOne ? "text" : "password"}
 										placeholder="Новый пароль"
-										name="password"
-										// onChange={handleChangeCreate}
+										onChange={handldeChange}
+
+										name="new_password"
+										value={profileData.new_password}
+									// onChange={handleChangeCreate}
 									/>
 									<img src="/svg/eye.svg" alt="" onClick={passwordTypeOne} />
 								</div>
@@ -181,8 +233,11 @@ function ProfilePages() {
 										className="outline-none"
 										type={passwordShowOne ? "text" : "password"}
 										placeholder="Подтвердите пароль"
-										name="password"
-										// onChange={handleChangeCreate}
+										name="conf_password"
+										value={profileData.conf_password}
+										onChange={handldeChange}
+
+									// onChange={handleChangeCreate}
 									/>
 									<img src="/svg/eye.svg" alt="" onClick={passwordTypeOne} />
 								</div>
@@ -199,7 +254,7 @@ function ProfilePages() {
 							<button onClick={logout}>Выйти из аккаунта</button>
 						</div>
 						<div>
-							<button onClick={() => setChangePin(false)}>Сохранить</button>
+							<button onClick={changePasswordSubmit}>Сохранить</button>
 						</div>
 					</div>
 				</div>
