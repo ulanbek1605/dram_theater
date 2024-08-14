@@ -14,11 +14,16 @@ function Forgot() {
     e.preventDefault();
     window.location.replace('/login')
   }
-  useEffect(() => {
+useEffect(() => {
+  try {
     if (search.get('key')) {
-      window.location.replace('/resetPassword')
+      window.location.replace('/resetPassword');
     }
-  }, [search])
+  } catch (error) {
+    console.error('Ошибка при обработке search params:', error);
+  }
+}, [search]);
+
   const handleResetPassword = (event: any) => {
     event.preventDefault()
     let formData = new FormData(event.target as HTMLFormElement)
