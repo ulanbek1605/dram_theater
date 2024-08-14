@@ -9,7 +9,6 @@ function Header() {
     const [menu, setMenu] = useState(false)
     const [token, setToken] = useState(false)
     const pathname = usePathname();
-    console.log(pathname)
     function showBurgerMenu(e: any) {
         e.preventDefault()
         setMenu(!menu)
@@ -26,7 +25,7 @@ function Header() {
     }, [])
 
     return (
-        <div className={`${pathname === '/login' || pathname === '/register' || pathname === '/reset-password' || pathname === '/hall' ||pathname === '/forgot' ? 'hidden' : "headers"} z-[51] relative`}>
+        <div className={`${pathname === '/login' || pathname === '/register' || pathname === '/reset-password' || pathname.includes("hall") ? 'hidden' : "headers"} z-[51] relative`}>
             <div className="header">
                 <div className="container">
                     <div className="header__inner">

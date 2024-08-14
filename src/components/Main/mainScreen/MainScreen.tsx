@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 function MainScreen() {
     const pathname = usePathname();
     return (
-        <div className={pathname === '/login'|| pathname === '/register' || pathname === '/reset-password' || pathname === '/hall' || pathname.includes('detailed') || pathname === '/forgot'? 'hidden' : 'main'}>
+        <div className={pathname === '/login'|| pathname === '/register' || pathname === '/reset-password' || pathname.includes("hall")  || pathname.includes('detailed') ? 'hidden' : 'main'}>
             <div className="main__container relative">
                 <Swiper
                     spaceBetween={0}

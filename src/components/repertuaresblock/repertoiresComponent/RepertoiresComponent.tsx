@@ -53,7 +53,7 @@ function Repertoiresgallery() {
                     image={item.image}
                     data={data}
                     time={time}
-                    price={`${price[0].price} - ${price[1].price}`} />
+                    price={`${price[0]?.price} - ${price[1]?.price}`} />
                 </div>
               )
           })
