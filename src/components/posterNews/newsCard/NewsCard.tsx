@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import  './newscard.css'
+import  './newsCard.css'
 function Newscard(props:{title:string, data:string, description:string, image:any}) {
   return (
     <div className='news_card'>
