@@ -51,7 +51,7 @@ function Repertoires() {
                     data={data}
                     time={time}
                     id={item.id}
-                    price={`${price[0].price} - ${price[1].price}`} />
+                    price={`${price[0].price} - ${price[1]?.price}`} />
                 </div>
               )
           })

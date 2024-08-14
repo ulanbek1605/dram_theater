@@ -12,7 +12,8 @@ interface CardProps {
     data: string
     time: string
     id: number
-    price: string | undefined
+    price: string | undefined,
+    item: any,
 }
 
 
@@ -92,11 +93,11 @@ function Card({ name, description, image, data, time, price, id }: CardProps) {
                         </div>
                     </div>
                     <div className="card_info_btn">
-                        <div className="card_btn_container w-[239px] h-[80px]">
+                        <Link href={`/hall/${id}`} className="card_btn_container w-[239px] h-[80px]">
                             <ButtonYellow className="text-black bg-yellow-500 ">
                                 Купить билеты
                             </ButtonYellow>
-                        </div>
+                        </Link>
                         <div className="card_details">
                             <Link href={`/detailed/${id}`}>Подробнее</Link>
                         </div>

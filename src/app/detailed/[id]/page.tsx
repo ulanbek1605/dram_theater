@@ -6,8 +6,8 @@ import Calendar from "@/components/deteils/Calendar";
 import { useParams } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 const page = () => {
-  const params = useParams()
-  
+  const params = useParams();
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [data, setData] = useState<{ [key: string]: any }>({});
@@ -26,7 +26,7 @@ const page = () => {
   };
 
   useEffect(() => {
-    if (!params.id) return
+    if (!params.id) return;
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -42,6 +42,8 @@ const page = () => {
   }, []);
 
   const [results, setResults] = useState<any[]>([]);
+  console.log(results);
+
   async function showData() {
     try {
       const response = await instance.get(`/repertoires/${params.id}/`);
@@ -114,7 +116,8 @@ const page = () => {
           <div className="w-[30%] max-1000:w-full">
             <div>
               <p className="text-[22px] text-[#515151] max-1000:text-[18px] font-normal">
-                Жанр: {data?.genres?.map((item:any) => formatDuration(item.name))}
+                Жанр:{" "}
+                {data?.genres?.map((item: any) => formatDuration(item.name))}
               </p>
               <p className="text-[22px] text-[#515151] max-1000:text-[18px] font-normal flex gap-8">
                 <span>13+</span>
@@ -130,7 +133,7 @@ const page = () => {
                 В ролях
               </span>
               <p className="flex gap-1 flex-wrap max-1000:text-[18px]">
-                {data.actors?.map((item:any) => (
+                {data.actors?.map((item: any) => (
                   <span>{item.full_name},</span>
                 ))}
               </p>
@@ -163,6 +166,7 @@ const page = () => {
                     time={time}
                     id={item.id}
                     price={`${price[0].price} - ${price[1].price}`}
+                    item={item}
                   />
                 </div>
               );
