@@ -90,7 +90,6 @@ const Page: React.FC = () => {
   console.log(hall);
 
   useEffect(() => {
-    
     const fetchData = async () => {
       try {
         const res = await axios.get<Hall>(
@@ -105,7 +104,7 @@ const Page: React.FC = () => {
     const fetchRepertoiresData = async () => {
       try {
         const res = await axios.get<Repertoire>(
-          `https://dramatheatre.pythonanywhere.com/api/v1/repertoires/${params.id}/`
+          `https://dramatheatre.pythonanywhere.com/api/v1/repertoire-seances/${params.id}/`
         );
         setRepertoires(res.data);
       } catch (error) {
@@ -118,47 +117,64 @@ const Page: React.FC = () => {
   }, [params.id]);
 
   return (
-    <div className="mt-[100px] flex items-center justify-center gap-2 flex-col">
-      {hall?.rows?.map((row, i) => (
-        <ul key={row.id} className="flex gap-2 w-full justify-center">
-          <li className="flex items-center justify-center text-black w-[31px] h-[31px] rounded-[6px] text-xs">
-            {row?.seats.length > 0 ? `row ${hall?.rows.length - i}` : ""}
-          </li>
-          {[...row?.seats, ...row?.empty_spaces]
-            .sort((a, b) => {
-              const seatNumberA =
-                (a as Seat).seat_number ?? (a as EmptySpace).from_seat;
-              const seatNumberB =
-                (b as Seat).seat_number ?? (b as EmptySpace).from_seat;
-              return seatNumberA - seatNumberB;
-            })
-            .map((cell, j) =>
-              (cell as EmptySpace).from_seat ? (
-                [...Array((cell as EmptySpace).empty_spots)].map((_, index) => (
-                  <li
-                    className="w-[31px] h-[31px]"
-                    key={`empty-${index}-${Math.random()}`}
-                  ></li>
-                ))
-              ) : (cell as Seat).seat_number ? (
-                <li
-                  className={`bg-[#b8b8b8] flex items-center justify-center w-[31px] h-[31px] rounded-[4px] font-normal  text-[19px] text-white `}
-                  key={Math.random()}
-                >
-                  {(cell as Seat).seat_number}
+    <div className="mt-[100px]">
+      <div className="overflow-x-auto">
+        <div className=" max-1200:w-[1200px]">
+          <h3 className="font-bold max-1600:text-[23px] text-[31px] text-[#929292] text-center max-1600:pb-[14px] pb-[20px]">
+            ПАРТЕР
+          </h3>
+          <div className=" flex items-center justify-center max-1600:gap-[6px] gap-[10px] flex-col">
+            {hall?.rows?.map((row, i) => (
+              <ul
+                key={row.id}
+                className="flex max-1600:gap-1 gap-[6px] w-full justify-center"
+              >
+                <li className="flex items-center justify-center  max-1600:w-[23px] w-[31px] max-1600:h-[23px] h-[31px] rounded-[6px] max-1600:text-[17px] text-[23px] text-[#929292]">
+                  {row?.seats.length > 0 ? `${hall?.rows.length - i}` : ""}
                 </li>
-              ) : (
-                <li
-                  className="w-[31px] order-[-1] h-[31px]"
-                  key={Math.random()}
-                ></li>
-              )
-            )}
-          <li className="flex items-center justify-center text-black w-[31px] h-[31px] rounded-[6px] text-xs">
-            {row?.seats.length > 0 ? `row ${hall?.rows.length - i}` : ""}
-          </li>
-        </ul>
-      ))}
+                {[...row?.seats, ...row?.empty_spaces]
+                  .sort((a, b) => {
+                    const seatNumberA =
+                      (a as Seat).seat_number ?? (a as EmptySpace).from_seat;
+                    const seatNumberB =
+                      (b as Seat).seat_number ?? (b as EmptySpace).from_seat;
+                    return seatNumberA - seatNumberB;
+                  })
+                  .map((cell, j) =>
+                    (cell as EmptySpace).from_seat ? (
+                      [...Array((cell as EmptySpace).empty_spots)].map(
+                        (_, index) => (
+                          <li
+                            className="max-1600:w-[23px] w-[31px] max-1600:h-[23px] h-[31px]"
+                            key={`empty-${index}-${Math.random()}`}
+                          ></li>
+                        )
+                      )
+                    ) : (cell as Seat).seat_number ? (
+                      <li
+                        className={`bg-[#b8b8b8] flex items-center justify-center max-1600:w-[23px] w-[31px] max-1600:h-[23px] h-[31px] rounded-[4px] font-normal  max-1600:text-[14px] text-[19px] text-white `}
+                        key={Math.random()}
+                      >
+                        {(cell as Seat).seat_number}
+                      </li>
+                    ) : (
+                      <li
+                        className="max-1600:w-[23px] w-[31px] order-[-1] max-1600:h-[23px] h-[31px]"
+                        key={Math.random()}
+                      ></li>
+                    )
+                  )}
+                <li className="flex items-center justify-center  max-1600:w-[23px] w-[31px] max-1600:h-[23px] h-[31px] rounded-[6px] max-1600:text-[17px] text-[23px] text-[#929292]">
+                  {row?.seats.length > 0 ? `${hall?.rows.length - i}` : ""}
+                </li>
+              </ul>
+            ))}
+          </div>
+          <div className="max-1600:py-[22px] py-[30px]  max-1600:rounded-[74PX_74PX_37PX_37PX] rounded-[98PX_98PX_49PX_49PX]  max-1600:max-w-[800px] max-w-[1118px] bg-[#772a2a] flex items-center justify-center mx-auto max-1600:text-[23px] text-[31px] font-semibold text-[#fff] max-1600:mt-[83px] mt-[111px]">
+            СЦЕНА
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

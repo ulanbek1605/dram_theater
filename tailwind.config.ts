@@ -18,6 +18,9 @@ const config: Config = {
       },
       screens: {
         "max-1600": { max: "1600px" },
+        "max-1500": { max: "1500px" },
+        "max-1400": { max: "1400px" },
+        "max-1300": { max: "1300px" },
         "max-1200": { max: "1200px" },
         "max-1000": { max: "1000px" },
         "max-800": { max: "800px" },
