@@ -1,10 +1,12 @@
-import Forgot from '@/components/ModalLogin/forgotaccount/Forgot'
-import React from 'react'
+import React, { Suspense } from "react";
+import Forgot from "@/components/ModalLogin/forgotaccount/Forgot";
 
-function page() {
+function Page() {
   return (
-	<div><Forgot/></div>
-  )
+    <Suspense fallback={<div>Loading...</div>}>
+      <Forgot />{" "}
+    </Suspense>
+  );
 }
 
-export default page
+export default Page;
