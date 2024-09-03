@@ -5,12 +5,21 @@
 .header{
     display: flex;
     justify-content: space-between;
-    background-color: rgba(241, 227, 211);
+    /* background-color: rgba(241, 227, 211); */
+    background: #F1E3D34D;
+    /* backdrop-filter: blur(12px); */
+    /* background: rgba(255, 255, 255, 0.86), rgba(241, 227, 211, 0.3); */
     padding: 14px 0 15px 0;
     position: fixed;
+    transition: background .3s ease-in-out;
     z-index:3;
     width: 100%;
 
+}
+
+.header_active {
+    background: #f1e3d3f7;
+    
 }
 .header__inner{
     display: flex;
