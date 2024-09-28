@@ -1,32 +1,56 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ButtonYellow, ButtonGray } from "../UI/Button";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import "./header.css";
 import { instance } from "../axios";
+
 function Header() {
-    const [menu, setMenu] = useState(false)
-    const [token, setToken] = useState(false)
+    const [menu, setMenu] = useState(false);
+    const headerRef = useRef<HTMLDivElement | null>(null)
+    const [token, setToken] = useState(false);
+    const [scrollPos, setScrollPos] = useState(50);
+    const [isVisible, setIsVisible] = useState(true);
     const pathname = usePathname();
+
     function showBurgerMenu(e: any) {
-        e.preventDefault()
-        setMenu(!menu)
+        e.preventDefault();
+        setMenu(!menu);
     }
 
     useEffect(() => {
-        if (typeof window == 'undefined') return
-        let token = localStorage.getItem('TokenDram')
-        if (token) {
-            let chekToken = instance.get('')
-        }
-        setToken(!!token)
+        if (typeof window === 'undefined') return;
 
-    }, [])
+        const token = localStorage.getItem('TokenDram');
+        if (token) {
+            let checkToken = instance.get('');
+            // Handle token verification here...
+        }
+        setToken(!!token);
+
+        if (!headerRef.current) return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+        const handleScroll = (e: any) => {
+            const currentScrollPos = window.pageYOffset;
+            if (currentScrollPos > scrollPos) {
+                setIsVisible(false); // Scrolling down
+            } else {
+                setIsVisible(true); // Scrolling up
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [scrollPos]);
 
     return (
         <div className={`${pathname === '/login' || pathname ===  "/by-ticket" || pathname === '/register' || pathname === '/reset-password' || pathname.includes("hall") ? 'hidden' : "headers"} z-[51] relative`}>
             <div className="header">
+
                 <div className="container">
                     <div className="header__inner">
                         <div className="header__logo">Logo</div>
