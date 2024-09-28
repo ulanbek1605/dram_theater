@@ -1,0 +1,14 @@
+.before-app {
+    position: relative;
+
+    &::after {
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        background: #9d3434;
+        content: "";
+        display: block;
+        width: 14px;
+        height: 10px;
+        position: absolute;
+        bottom: -1px;
+    }
+}

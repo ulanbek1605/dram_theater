@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 interface Seance {
+  id: number;
   date: string;
 }
 
@@ -9,10 +10,12 @@ interface Option {
   day: number;
   inActive: boolean;
   value: string;
+  seanceId?: number;
 }
 
 interface CalendarProps {
   seances?: Seance[];
+  HandleClick: (date: string) => void; // Функция принимает строку с датой
 }
 
 const months = [
@@ -30,39 +33,43 @@ const months = [
   "Декабрь",
 ];
 
-const Calendar = ({ seances = [] }: CalendarProps): JSX.Element => {
+const Calendar = ({ seances = [], HandleClick }: CalendarProps): JSX.Element => {
   const calendarRef = useRef<HTMLDivElement>(null);
-  const [currentDate, setCurrentDate] = useState<{
-    year: number;
-    month: number;
-  }>({
+  const [currentDate, setCurrentDate] = useState({
     year: new Date().getFullYear(),
     month: new Date().getMonth(),
   });
   const [days, setDays] = useState<Option[]>([]);
 
-  useEffect(() => {
-    const generateDays = () => {
-      const lastDateOfMonth = new Date(
-        currentDate.year,
-        currentDate.month + 1,
-        0
-      ).getDate();
-      const arr: Option[] = [];
-      for (let i = 1; i <= lastDateOfMonth; i++) {
-        const value = new Date(currentDate.year, currentDate.month, i + 1)
-          .toISOString()
-          .split("T")[0];
-        arr.push({
-          day: i,
-          inActive: seances.some((seance) => seance.date === value),
-          value: value,
-        });
-      }
-      setDays(arr);
-    };
-    generateDays();
+  const generateDays = useCallback(() => {
+    const lastDateOfMonth = new Date(
+      currentDate.year,
+      currentDate.month + 1,
+      0
+    ).getDate();
+
+    const arr: Option[] = [];
+    for (let i = 1; i <= lastDateOfMonth; i++) {
+      const value = new Date(Date.UTC(currentDate.year, currentDate.month, i))
+        .toISOString()
+        .split("T")[0];
+
+      const seance = seances.find((seance) => seance.date === value);
+
+      arr.push({
+        day: i,
+        inActive: !!seance,
+        value: value,
+        seanceId: seance?.id,
+      });
+    }
+    return arr;
   }, [currentDate, seances]);
+
+  useEffect(() => {
+    const generatedDays = generateDays();
+    setDays(generatedDays);
+  }, [generateDays]);
 
   const increaseMonth = () => {
     setCurrentDate((prev) =>
@@ -81,7 +88,7 @@ const Calendar = ({ seances = [] }: CalendarProps): JSX.Element => {
   };
 
   return (
-    <div ref={calendarRef} className="calendar w-[70%] max-1000:w-full pr-24 max-1000:pr-0 max-1600:pr-8">
+    <div ref={calendarRef} className="calendar w-full">
       <div className="flex items-center justify-between">
         <svg
           onClick={decreaseMonth}
@@ -99,10 +106,10 @@ const Calendar = ({ seances = [] }: CalendarProps): JSX.Element => {
             strokeLinejoin="round"
           />
         </svg>
-        <p className="current-date max-1000: text-[45px] max-1000:text-[18px] font-medium text-[#515151]">
+        <p className="current-date max-1000:text-[18px] font-medium text-[#515151]">
           {months[currentDate.month]} {currentDate.year}
         </p>
-        <svg  
+        <svg
           onClick={increaseMonth}
           width="45"
           height="45"
@@ -135,6 +142,7 @@ const Calendar = ({ seances = [] }: CalendarProps): JSX.Element => {
           {days.map((item) => (
             <li
               key={item.value}
+              onClick={() => item.inActive && item.seanceId ? HandleClick(item.value) : null} // Передаем дату в HandleClick
               className={`${
                 item.inActive ? "text-[#515151] bg-[#ffcd00]" : "text-[#a7a7a7]"
               } border aspect-[2/1] border-[#515151] max-700:aspect-[1/1] font-[16px] items-center flex justify-center rounded-[5px]`}
