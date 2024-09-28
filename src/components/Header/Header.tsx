@@ -48,8 +48,9 @@ function Header() {
     }, [scrollPos]);
 
     return (
-        <div className={`${pathname === '/login' || pathname === '/register' || pathname === '/reset-password' || pathname.includes("hall") ? 'hidden' : "headers"} z-[51] relative`}>
-            <div ref={headerRef} className={`${!isVisible ? 'header_active' : ''} header`}>
+        <div className={`${pathname === '/login' || pathname ===  "/by-ticket" || pathname === '/register' || pathname === '/reset-password' || pathname.includes("hall") ? 'hidden' : "headers"} z-[51] relative`}>
+            <div className="header">
+
                 <div className="container">
                     <div className="header__inner">
                         <div className="header__logo">Logo</div>
