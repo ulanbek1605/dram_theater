@@ -1,14 +1,24 @@
 import Repertoires from "@/components/repertuaresblock/repertoires/Repertoires";
 import Premieres from "@/components/upcomingPremieres/premieres/Premieres";
 import Gallery from "@/components/posterGallery/gallery/Gallery";
-import News from "@/components/posterNews/news/News";
+<<<<<<< HEAD
+// import Newscard from "@/components/posterNews/newsCard/NewsCard";
 export default function Home() {
   return (
    <div>
    <Repertoires />
    <Premieres />
    <Gallery />
-   <News />
+   {/* <Newscard /> */}
    </div>
+=======
+export default function Home() {
+  return (
+    <div>
+      <Repertoires />
+      <Premieres />
+      <Gallery />
+    </div>
+>>>>>>> 9fa6a394c893445a8ebe3823cf72e248b82a1fa2
   );
 }
